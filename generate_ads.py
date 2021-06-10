@@ -1,7 +1,7 @@
 import requests
 
 HEMINGWAI_API_KEY = 'SIGNUP_AT_TEXTCORTEX_TO_GET_YOUR_KEY'
-HEMINGWAI_GATEWAY = 'https://api.textcortex.com/hemingway/generate_text'
+HEMINGWAI_GATEWAY = 'https://api.textcortex.com/hemingwai/generate_text'
 
 
 def generate_ads(product, target_segment, character_length, creativity,
