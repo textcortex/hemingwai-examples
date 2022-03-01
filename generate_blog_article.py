@@ -4,19 +4,20 @@ HEMINGWAI_API_KEY = 'SIGNUP_AT_TEXTCORTEX_TO_GET_YOUR_KEY'
 HEMINGWAI_GATEWAY = 'https://api.textcortex.com/hemingwai/generate_text'
 
 
-def generate_blog_article(blog_title, target_segment, character_length, creativity,
-                          source_language):
+def generate_blog_article(blog_title, blog_keywords, character_length, creativity,
+                          source_language, n_gen):
     try:
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         data = {
             "prompt": blog_title,
-            "category": 'Blog Article',
-            "target_segment": target_segment,
+            "category": 'Blog Body',
+            "parameters": blog_keywords,
             "character_count": character_length,
             "source_language": source_language,
             # Sets creativity, number between 0 and 1. Default is 0.65
             "creativity": creativity,
-            "api_key": HEMINGWAI_API_KEY
+            "api_key": HEMINGWAI_API_KEY,
+            "n_gen": n_gen
         }
         req = requests.post(HEMINGWAI_GATEWAY, json=data, headers=headers)
         if req.status_code == 403:
@@ -32,8 +33,8 @@ def generate_blog_article(blog_title, target_segment, character_length, creativi
 
 
 response = generate_blog_article(blog_title='Why AI Will Win Content',
-                                 target_segment='Middle Aged People',
-                                 character_length=500, creativity=0.7, source_language='en')
+                                 blog_keywords="'ai', 'deep learning'",
+                                 character_length=300, creativity=0.7, source_language='en', n_gen=2)
 # Response includes rich data with focus keywords in it, let's check out the results
 i = 1
 for row in response:

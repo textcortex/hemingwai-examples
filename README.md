@@ -20,12 +20,13 @@ HEMINGWAI_GATEWAY = 'https://api.textcortex.com/hemingway/generate_text'
 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 data = {
             "prompt": "Blue Satin Wedding Dress",
-            "category": "Clothing",
-            "target_segment": "",
+            "category": "Product Description",
+            "parameters": "Category: ['Clothing', 'Women']",
             "character_count": character_length,
             "source_language": source_language,
             "creativity": creativity, # Sets creativity, number between 0 and 1. Default is 0.65
-            "api_key": HEMINGWAI_API_KEY
+            "api_key": HEMINGWAI_API_KEY,
+            "n_gen": 2 # Sets how many samples to be generated
 }
 req = requests.post(HEMINGWAI_GATEWAY, json=data, headers=headers)
 ```
