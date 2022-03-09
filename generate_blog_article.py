@@ -6,6 +6,15 @@ HEMINGWAI_GATEWAY = 'https://api.textcortex.com/hemingwai/generate_text'
 
 def generate_blog_article(blog_title, blog_keywords, character_length, creativity,
                           source_language, n_gen):
+    """
+    :param blog_title: What is the title of your blog
+    :param blog_keywords: What are some of the keywords relevant for your blog?
+    :param character_length: Defines the length of generated meta descriptions
+    :param creativity: A number between 0 and 1. 0 is the lowest creativity, 1 is the highest.
+    :param source_language: Use 'en' for English, for other languages use the correct language code
+    :param n_gen: Defines how many alternatives will be generated.
+    :return:
+    """
     try:
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         data = {

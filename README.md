@@ -9,6 +9,15 @@ Textcortex AI uses fine tuned models for application specific needs. Accessing t
 3. Go to API Key section and copy your key.
 4. Make a POST request to http://api.textcortex.com/hemingwai/generate_text
 
+### Types Of Content That Can Be Generated with TextCortex API:
+- Generate Product Descriptions
+- Generate Blog Articles
+- Generate Meta Descriptions
+- Generate Instagram Captions
+- Generate PPC Ads
+- Generate Email Body
+- Generate Email Subject
+
 ### Here is an example POST request for generating Product Descriptions:
 
 ```
@@ -61,7 +70,6 @@ The response would be like the following:
             "word_count": 76
         }, ....
 ```
-
 Rest of the example can be found under root directory. If you have questions, contact us at dev@textcortex.com
 
 

@@ -6,6 +6,15 @@ HEMINGWAI_GATEWAY = 'https://api.textcortex.com/hemingwai/generate_text'
 
 def generate_email_body(email_subject, target_segment, character_length, creativity,
                         source_language, n_gen):
+    """
+    :param email_subject: What is the subject line of your email?
+    :param target_segment: Who is your target group/segment
+    :param character_length: Defines the length of generated meta descriptions
+    :param creativity: A number between 0 and 1. 0 is the lowest creativity, 1 is the highest.
+    :param source_language: Use 'en' for English, for other languages use the correct language code
+    :param n_gen: Defines how many alternatives will be generated.
+    :return:
+    """
     try:
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         data = {

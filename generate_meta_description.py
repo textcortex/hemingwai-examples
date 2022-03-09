@@ -4,11 +4,12 @@ HEMINGWAI_API_KEY = 'SIGNUP_AT_TEXTCORTEX_TO_GET_YOUR_KEY'
 HEMINGWAI_GATEWAY = 'https://api.textcortex.com/hemingwai/generate_text'
 
 
-def generate_email_subject(keywords, target_segment, character_length, creativity,
-                           source_language, n_gen):
+def generate_meta_description(page_title, page_keywords, character_length, creativity,
+                              source_language, n_gen):
     """
-    :param keywords: Give some keywords regarding to your email address
-    :param target_segment: Who is your target audience?
+    :param page_title: What is the title of the page that you want to generate meta descriptions for?
+    :param page_keywords: Give some keywords that can help TextCortex to understand what this page is about, don't
+    forget to seperate each keyword using commas.
     :param character_length: Defines the length of generated meta descriptions
     :param creativity: A number between 0 and 1. 0 is the lowest creativity, 1 is the highest.
     :param source_language: Use 'en' for English, for other languages use the correct language code
@@ -18,9 +19,9 @@ def generate_email_subject(keywords, target_segment, character_length, creativit
     try:
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         data = {
-            "prompt": keywords,
-            "category": 'Email Subject',
-            "parameters": target_segment,
+            "prompt": page_title,
+            "category": 'Meta Description',
+            "parameters": page_keywords,
             "character_count": character_length,
             "source_language": source_language,
             # Sets creativity, number between 0 and 1. Default is 0.65
@@ -41,9 +42,10 @@ def generate_email_subject(keywords, target_segment, character_length, creativit
         print('An error occured while making the request')
 
 
-response = generate_email_subject(keywords='Newsletter, Summer, Sale',
-                                  target_segment='Middle Aged People',
-                                  character_length=100, creativity=0.7, source_language='en', n_gen=2)
+response = generate_meta_description(page_title='Urban Fast Intro Video Template',
+                                     page_keywords="video templates, stock videos, design elements, openers, "
+                                                   "adobe after effects",
+                                     character_length=300, creativity=0.5, source_language='en', n_gen=3)
 # Response includes rich data with focus keywords in it, let's check out the results
 i = 1
 for row in response:

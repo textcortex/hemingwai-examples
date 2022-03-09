@@ -6,6 +6,17 @@ HEMINGWAI_GATEWAY = 'https://api.textcortex.com/hemingwai/generate_text'
 
 def generate_product_descriptions(product_title, features, brand_name, product_category, character_length, creativity,
                                   source_language, n_gen):
+    """
+    :param product_title: What is the title of the product that you are selling?
+    :param features: What features does your product have? This can be left empty if you don't have enough data
+    :param brand_name: What is the name of the brand?
+    :param product_category: What is the category of the product that you are selling?
+    :param character_length: Defines the length of generated meta descriptions
+    :param creativity: A number between 0 and 1. 0 is the lowest creativity, 1 is the highest.
+    :param source_language: Use 'en' for English, for other languages use the correct language code
+    :param n_gen: Defines how many alternatives will be generated.
+    :return:
+    """
     try:
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         data = {
