@@ -7,7 +7,7 @@ Textcortex AI uses fine tuned models for application specific needs. Accessing t
 1. Signup at https://textcortex.com
 2. Sign-in and click on account on top right.
 3. Go to API Key section and copy your key.
-4. Make a POST request to http://api.textcortex.com/hemingwai/generate_text
+4. Make a POST request to https://api.textcortex.com/hemingwai/generate_text_v2
 
 ### Types Of Content That Can Be Generated with TextCortex API:
 - Generate Product Descriptions
@@ -22,54 +22,51 @@ Textcortex AI uses fine tuned models for application specific needs. Accessing t
 
 ```
 import requests
+import json
 
-HEMINGWAI_API_KEY = 'SIGNUP_AT_TEXTCORTEX_TO_GET_YOUR_KEY'
-HEMINGWAI_GATEWAY = 'https://api.textcortex.com/hemingway/generate_text'
+url = "https://api.textcortex.com/hemingwai/generate_text_v2"
 
-headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-data = {
-            "prompt": "Blue Satin Wedding Dress",
-            "category": "Product Description",
-            "parameters": "Category: ['Clothing', 'Women']",
-            "character_count": character_length,
-            "source_language": source_language,
-            "creativity": creativity, # Sets creativity, number between 0 and 1. Default is 0.65
-            "api_key": HEMINGWAI_API_KEY,
-            "n_gen": 2 # Sets how many samples to be generated
+payload = json.dumps({
+  "template_name": "product_description",
+  "prompt": {
+    "product_name": "Blue sports underwear",
+    "brand": "Nike",
+    "product_category": "Clothing",
+    "product_features": "Ultra soft and super well wet absorbing"
+  },
+  "temperature": 0.65,
+  "word_count": 200,
+  "n_gen": 2,
+  "source_language": "en",
+  "api_key": "YOUR_API_KEY"
+})
+headers = {
+  'Content-Type': 'application/json'
 }
-req = requests.post(HEMINGWAI_GATEWAY, json=data, headers=headers)
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
 ```
 
 The response would be like the following:
 ```
 {
     "status": "success",
-    "ai_results": [
+    "generated_text": [
         {
-            "generated_text": " This is a gorgeous and unique dress perfect for your coming event. The dress has a lovely V neckline and a flattering waistline that will fit in all sizes. The fabric is soft and comfortable.The material is chiffon which is the best choice for you and your friends. This dress is for every woman who wants to look beautiful while feeling effortless.\n",
-            "rank": 0.9561,
-            "text_length": 433,
-            "word_frequency": [
-                {
-                    "word": "soft",
-                    "frequency": 3
-                },
-                {
-                    "word": "material",
-                    "frequency": 3
-                },
-                {
-                    "word": "dress",
-                    "frequency": 3
-                },
-                {
-                    "word": "comfortable",
-                    "frequency": 3
-                }
-            ],
-            "word_count": 76
-        }, ....
+            "text": "In addition to the standard color Nike Dri-Fit, the Nike Dri-Fit Blue is available in two other colors as well. The Nike Dri-Fit Blue is made of a special blend of spandex and elastane that is soft, ultra soft, and super well wet absorbing. It is designed for comfort and performance with a soft interior to help keep you cool and dry even after an intense workout.",
+            "id": "d7873828-0d1d-4961-a3a4-0f797c9a9218"
+        },
+        {
+            "text": "Nike Men's Men's Blue Sports Running Shorts.",
+            "id": "bb1f65b2-a660-4f33-8535-ffd5d86d16ee"
+        }
+    ],
+    "remaining_requests": 86,
+    "error": 200
+}
 ```
-Rest of the example can be found under root directory. If you have questions, contact us at dev@textcortex.com
+Rest of the examples together with PHP scripts can be found under root directory. If you have questions, contact us at dev@textcortex.com
 
 

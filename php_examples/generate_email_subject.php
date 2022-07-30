@@ -1,9 +1,9 @@
-import requests
-import json
-
-url = "https://api.textcortex.com/hemingwai/generate_text_v2"
-
-payload = json.dumps({
+<?php
+$client = new Client();
+$headers = [
+  'Content-Type' => 'application/json'
+];
+$body = '{
   "template_name": "email_subject",
   "prompt": {
     "email_keyword": "ai, improve sales, sell more",
@@ -12,16 +12,12 @@ payload = json.dumps({
     "email_context": "We can help you sell more using our AI tool. Would you like to try it?",
     "company_description": "TextCortex AI is a company that produces content using natural language generation technology."
   },
-  "temperature": 0.65,
+  "temperature": 0.9,
   "word_count": 5,
   "n_gen": 2,
   "source_language": "en",
   "api_key": "YOUR_API_KEY"
-})
-headers = {
-  'Content-Type': 'application/json'
-}
-
-response = requests.request("POST", url, headers=headers, data=payload)
-
-print(response.text)
+}';
+$request = new Request('POST', 'https://api.textcortex.com/hemingwai/generate_text_v2', $headers, $body);
+$res = $client->sendAsync($request)->wait();
+echo $res->getBody();

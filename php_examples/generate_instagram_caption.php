@@ -1,9 +1,9 @@
-import requests
-import json
-
-url = "https://api.textcortex.com/hemingwai/generate_text_v2"
-
-payload = json.dumps({
+<?php
+$client = new Client();
+$headers = [
+  'Content-Type' => 'application/json'
+];
+$body = '{
   "template_name": "instagram_caption",
   "prompt": {
     "product": "Blue shaded sunglasses with UV protection",
@@ -14,11 +14,7 @@ payload = json.dumps({
   "n_gen": 2,
   "source_language": "en",
   "api_key": "YOUR_API_KEY"
-})
-headers = {
-  'Content-Type': 'application/json'
-}
-
-response = requests.request("POST", url, headers=headers, data=payload)
-
-print(response.text)
+}';
+$request = new Request('POST', 'https://api.textcortex.com/hemingwai/generate_text_v2', $headers, $body);
+$res = $client->sendAsync($request)->wait();
+echo $res->getBody();

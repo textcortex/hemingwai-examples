@@ -4,15 +4,12 @@ import json
 url = "https://api.textcortex.com/hemingwai/generate_text_v2"
 
 payload = json.dumps({
-  "template_name": "product_description",
+  "template_name": "paraphrase",
   "prompt": {
-    "product_name": "Blue sports underwear",
-    "brand": "Nike",
-    "product_category": "Clothing",
-    "product_features": "Ultra soft and super well wet absorbing"
+    "original_sentence": "He also teaches architectural and urban design studios in several universities as an adjunct professor."
   },
-  "temperature": 0.65,
-  "word_count": 200,
+  "temperature": 1,
+  "word_count": 400,
   "n_gen": 2,
   "source_language": "en",
   "api_key": "YOUR_API_KEY"
