@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "https://api.textcortex.com/hemingwai/generate_text_v2"
+url = "https://api.textcortex.com/hemingwai/generate_text_v3"
 
 payload = json.dumps({
   "template_name": "ads_copy",
@@ -13,7 +13,7 @@ payload = json.dumps({
     "ad_keywords": "vegan, face cream, sustainable"
   },
   "temperature": 0.65,
-  "word_count": 200,
+  "token_count": 200,
   "n_gen": 5,
   "source_language": "en",
   "api_key": "YOUR_API_KEY"

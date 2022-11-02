@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "https://api.textcortex.com/hemingwai/generate_text_v2"
+url = "https://api.textcortex.com/hemingwai/generate_text_v3"
 
 payload = json.dumps({
   "template_name": "paraphrase",
@@ -9,7 +9,7 @@ payload = json.dumps({
     "original_sentence": "He also teaches architectural and urban design studios in several universities as an adjunct professor."
   },
   "temperature": 1,
-  "word_count": 400,
+  "token_count": 400,
   "n_gen": 2,
   "source_language": "en",
   "api_key": "YOUR_API_KEY"

@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "https://api.textcortex.com/hemingwai/generate_text_v2"
+url = "https://api.textcortex.com/hemingwai/generate_text_v3"
 
 payload = json.dumps({
   "template_name": "email_subject",
@@ -13,7 +13,7 @@ payload = json.dumps({
     "company_description": "TextCortex AI is a company that produces content using natural language generation technology."
   },
   "temperature": 0.65,
-  "word_count": 5,
+  "token_count": 5,
   "n_gen": 2,
   "source_language": "en",
   "api_key": "YOUR_API_KEY"

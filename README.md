@@ -7,7 +7,7 @@ Textcortex AI uses fine tuned models for application specific needs. Accessing t
 1. Signup at https://textcortex.com
 2. Sign-in and click on account on top right.
 3. Go to API Key section and copy your key.
-4. Make a POST request to https://api.textcortex.com/hemingwai/generate_text_v2
+4. Make a POST request to https://api.textcortex.com/hemingwai/generate_text_v3
 
 ### Types Of Content That Can Be Generated with TextCortex API:
 - Generate Product Descriptions
@@ -24,7 +24,7 @@ Textcortex AI uses fine tuned models for application specific needs. Accessing t
 import requests
 import json
 
-url = "https://api.textcortex.com/hemingwai/generate_text_v2"
+url = "https://api.textcortex.com/hemingwai/generate_text_v3"
 
 payload = json.dumps({
   "template_name": "product_description",
@@ -35,7 +35,7 @@ payload = json.dumps({
     "product_features": "Ultra soft and super well wet absorbing"
   },
   "temperature": 0.65,
-  "word_count": 200,
+  "token_count": 200,
   "n_gen": 2,
   "source_language": "en",
   "api_key": "YOUR_API_KEY"
